@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{% if session.logged_in %}    
+
+<div> Your profile data:</div>
+<form method=post action="{{ url_for('update_data') }}" enctype=multipart/form-data>
+    <div>
+        {% if first_name != None %}
+        <div class="input"> First Name: <input type=text value="{{ first_name }}" name=first_name></div>
+        {% else %}
+        <div class="input"> First Name: <input type=text value="Enter your first name" name=first_name></div>
+        {% endif %}
+        {% if last_name != None %}
+        <div class="input"> Last Name: <input type=text value="{{ last_name }}" name=last_name></div>
+        {% else %}
+        <div class="input"> Last Name: <input type=text value="Enter your last name" name=last_name></div>
+        {% endif %}
+        <div> Your experience: </div>
+        {% if experience != None %}
+        <textarea name=experience rows=6 cols=45> {{ experience }} </textarea>
+        {% else %}
+        <textarea name=experience rows=6 cols=45> Enter your experience in details </textarea>
+        {% endif %}
+        <div> Your achievments: </div>
+        {% if achievments != None %}
+        <textarea name=achievments rows=6 cols=45> {{ achievments }} </textarea>
+        {% else %}
+        <textarea name=achievments rows=6 cols=45> Enter your achievments in details </textarea>
+        {% endif %}    
+        {% if file != None %}
+        <div> Your profile photo: </div>
+        <img src=" {{ file }}" width="64" height="64">
+        {% endif %}
+        <div> Update profile photo </div>
+        <input type="file" name="img">
+
+        <div><input type=submit value="Change data"></div>
+    </div>
+</form>
+
+{% else %}
+<div> Please log in or sing up</div>
+{% endif %}
+
+{% endblock %}
