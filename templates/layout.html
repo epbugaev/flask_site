@@ -1,0 +1,22 @@
+<title> Resume creator </title>
+
+<h1> Resume </h1> 
+
+<div>
+{% if session.logged_in %}
+    <div>
+        <a href="{{ url_for('logout') }}">Log out</a>  
+        <a href="{{ url_for('profile') }}">Profile</a>   
+        <a href="{{ url_for('resume') }}">Resume</a>    
+    </div>
+{% else %}
+    <div>
+        <a href="{{ url_for('login') }}">Sing in</a>    
+        <a href="{{ url_for('register') }}">Sing up</a>
+    </div>
+{% endif %}
+
+{% block body %}{% endblock %}
+
+</div>
+

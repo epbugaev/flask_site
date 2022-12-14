@@ -1,0 +1,14 @@
+{% if session.logged_in %}
+    <h1> {{ first_name }} {{ last_name }} </h1>
+    {% if file != None %}
+    <img src="{{ file }}" width="64" height="64">
+    {% endif %}
+    {% if experience != None %}
+    <h2> Experience: </h2>
+    <div> {{ experience }} </div>
+    {% endif %}
+    {% if achievments != None %}
+    <h2> Achievments: </h2>
+    <div> {{ achievments }} </div>
+    {% endif %}
+{% endif %}
